@@ -1,0 +1,45 @@
+<html>
+<head>
+	<meta http-equiv="content-type" charset="utf-8">
+	<title>mapTools</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script type="text/javascript" src="js/OpenLayers.js"></script>
+	<script type="text/javascript" src="js/maptools.js"></script>
+</head>
+
+<body>
+	<div class="map" id="map">
+		<div id="toolsDiv"></div>
+	</div>
+	<script>
+		var l1 = new OpenLayers.Layer.WMTS({
+            name: "地理底图",
+            url: "http://t0.tianditu.com/vec_c/wmts",
+            layer: "vec",
+            style: "default",
+            matrixSet: "c",
+            format: "tiles",
+            isBaseLayer: true
+        });
+        var l2 = new OpenLayers.Layer.WMTS({
+            name: "标注",
+            url: "http://t0.tianditu.com/cva_c/wmts",
+            layer: "cva",
+            style: "default",
+            matrixSet: "c",
+            format: "tiles",
+            isBaseLayer: false
+        });
+        var map = new OpenLayers.Map({
+            div: "map",
+            layers: [l1, l2],
+            projection: "EPSG:4326",
+            numZoomLevels: 20,
+            center: [101.33869, 35.98203],
+            zoom: 4
+        });
+		maptools({nodeId:'toolsDiv',map:map});
+	</script>
+</body>
+
+</html>
