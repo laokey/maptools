@@ -8,3 +8,5 @@
 	map:map    //openlayer 地图对象
 	});  
   
+```
+  
